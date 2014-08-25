@@ -2,7 +2,7 @@
 
 A very simple wrapper over the most amazing networking library for objective C, AFNetworking. We extensively use it inside RC and it is actively being updated. Unless you know what you are using, I recommend not to use it unless we clearstrike this warning.
 
-[![CI Status](http://img.shields.io/travis/Akshay Deo/AFNetworkingHelper.svg?style=flat)](https://travis-ci.org/Akshay Deo/AFNetworkingHelper)
+[![CI Status](http://img.shields.io/travis/RainingClouds/AFNetworkingHelper.svg?style=flat)](https://travis-ci.org/Akshay Deo/AFNetworkingHelper)
 [![Version](https://img.shields.io/cocoapods/v/AFNetworkingHelper.svg?style=flat)](http://cocoadocs.org/docsets/AFNetworkingHelper)
 [![License](https://img.shields.io/cocoapods/l/AFNetworkingHelper.svg?style=flat)](http://cocoadocs.org/docsets/AFNetworkingHelper)
 [![Platform](https://img.shields.io/cocoapods/p/AFNetworkingHelper.svg?style=flat)](http://cocoadocs.org/docsets/AFNetworkingHelper)
