@@ -24,6 +24,7 @@ Akshay Deo, akshay@rainingclouds.com
 ## License
 
 Copyright (c) 2014 Akshay Deo <akshay@rainingclouds.com>
+
 Copyright (c) 2014 RainingClouds Technologies Private Limited
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
