@@ -11,6 +11,44 @@
 
 @implementation AFNetworkingHelper
 
++ (void)executePostWithUrl:(NSString *)url andParameters:(NSDictionary *)parameters andHeaders:(NSDictionary *)headers andAuthorizationHeaderUser:(NSString *)user andAuthrozationHeaderPassword:(NSString *)password withSuccessHandler:(void (^)(AFHTTPRequestOperation *, id, bool))success withFailureHandler:(void (^)(AFHTTPRequestOperation *, NSError *))failure withLoadingViewOn:(UIView *)parentView
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager setRequestSerializer:[AFJSONRequestSerializer serializer]];
+    [[manager securityPolicy]setAllowInvalidCertificates:YES];
+    [[manager requestSerializer]setAuthorizationHeaderFieldWithUsername:user password:password];
+    [manager setResponseSerializer:[AFJSONResponseSerializer serializer]];
+    
+    [[manager requestSerializer] setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    // check if custom headers are present and add them
+    if (headers != nil) {
+        [headers enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+            [[manager requestSerializer] setValue:obj forHTTPHeaderField:key];
+        }];
+    }
+    if (parentView == nil) {
+        [manager POST:url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            NSLog(@"success %@ - %@", operation, responseObject);
+            bool apiSuccess = YES;
+            success(operation, responseObject, apiSuccess);
+        }     failure:failure];
+    }
+    else {
+        [MBProgressHUD showHUDAddedTo:parentView animated:YES];
+        [manager POST:url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            NSLog(@"success %@ - %@", operation, responseObject);
+            [MBProgressHUD hideAllHUDsForView:parentView animated:YES];
+            bool apiSuccess = YES;
+            success(operation, responseObject, apiSuccess);
+        }     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"failure %d",[error code]);
+            [MBProgressHUD hideAllHUDsForView:parentView animated:YES];
+            failure(operation, error);
+        }];
+    }
+}
+
+
 + (void) executeDeleteWithUrl:(NSString *)url AndParameters:(NSDictionary *)parameters AndHeaders:(NSDictionary *)headers withSuccessHandler:(void (^)(AFHTTPRequestOperation *, id, bool))success withFailureHandler:(void (^)(AFHTTPRequestOperation *, NSError *))failure withLoadingViewOn:(UIView *)parentView {
     
     if(![self isDataConnectionAvailable]){

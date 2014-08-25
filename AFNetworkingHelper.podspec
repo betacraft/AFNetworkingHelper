@@ -19,7 +19,7 @@ Pod::Spec.new do |s|
   s.license          = 'MIT'
   s.author           = { "Akshay Deo" => "akshay@rainingclouds.com" }
   s.source           = { :git => "https://github.com/RainingClouds/AFNetworkingHelper.git", :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/akshay_deo'
+  s.social_media_url = 'https://twitter.com/akshay_deo'
 
   s.platform     = :ios, '7.0'
   s.requires_arc = true
