@@ -1,0 +1,4 @@
+# reference: http://www.objc.io/issue-6/travis-ci.html
+-
+-language: objective-c
+-# before_install: cd Example && pod install && cd -
