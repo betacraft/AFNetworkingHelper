@@ -2,6 +2,7 @@
 target 'AFNetworkingHelper', :exclusive => true do
   pod "AFNetworkingHelper", :path => "../"
 
-  pod 'Specta', '~> 0.2.1'
-  pod 'Expecta'
+  pod 'AFNetworking'
+  pod 'MBProgressHUD'
+  pod 'Reachability'
 end
