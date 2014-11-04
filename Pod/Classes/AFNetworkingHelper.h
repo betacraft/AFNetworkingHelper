@@ -13,6 +13,7 @@
 
 @interface AFNetworkingHelper : NSObject
 
++ (void)cancelAllRunningNetworkOperations;
 
 + (void) executeDeleteWithUrl:(NSString *)url AndParameters:(NSDictionary *)parameters AndHeaders:(NSDictionary *)headers withSuccessHandler:(void (^)(AFHTTPRequestOperation *, id, bool))success withFailureHandler:(void (^)(AFHTTPRequestOperation *, NSError *))failure withLoadingViewOn:(UIView *)parentView;
 
