@@ -427,7 +427,6 @@ static NSMutableArray *networkQueue = nil;
             }
             [[self getNetworkQueue]removeObject:operation];
             NSLog(@"success %@ - %@", operation, responseObject);
-            
             bool apiSuccess = YES;
             success(operation, responseObject, apiSuccess);
         }    failure:^(AFHTTPRequestOperation *operation, NSError *error) {
