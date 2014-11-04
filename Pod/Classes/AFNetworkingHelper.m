@@ -24,6 +24,7 @@ static NSMutableArray *networkQueue = nil;
     for (AFHTTPRequestOperation *operation in [self getNetworkQueue]){
         @try {
             [operation cancel];
+            [networkQueue removeObject:operation];
         }
         @catch (NSException *exception) {
             NSLog(@"Error while cancelling the operation");
