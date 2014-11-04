@@ -53,11 +53,17 @@ static NSMutableArray *networkQueue = nil;
     AFHTTPRequestOperation *operation;
     if (parentView == nil) {
       operation = [manager POST:url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+           if ([operation isCancelled]){
+              return;
+            }
             [[self getNetworkQueue]removeObject:operation];
             NSLog(@"success %@ - %@", operation, responseObject);
             bool apiSuccess = YES;
             success(operation, responseObject, apiSuccess);
         }     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            if ([operation isCancelled]){
+                return;
+            }
             [[self getNetworkQueue]removeObject:operation];
             failure(operation, error);
         }];
@@ -65,12 +71,18 @@ static NSMutableArray *networkQueue = nil;
     else {
         [MBProgressHUD showHUDAddedTo:parentView animated:YES];
         operation = [manager POST:url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            if ([operation isCancelled]){
+                return;
+            }
             [[self getNetworkQueue]removeObject:operation];
             NSLog(@"success %@ - %@", operation, responseObject);
             [MBProgressHUD hideAllHUDsForView:parentView animated:YES];
             bool apiSuccess = YES;
             success(operation, responseObject, apiSuccess);
         }     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            if ([operation isCancelled]){
+                return;
+            }
             NSLog(@"failure %ld",[error code]);
             [MBProgressHUD hideAllHUDsForView:parentView animated:YES];
             failure(operation, error);
@@ -102,11 +114,17 @@ static NSMutableArray *networkQueue = nil;
     AFHTTPRequestOperation *operation;
     if (parentView == nil) {
         operation = [manager DELETE:url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            if ([operation isCancelled]){
+                return;
+            }
             [[self getNetworkQueue]removeObject:operation];
             NSLog(@"success %@ - %@", operation, responseObject);
             bool apiSuccess = YES;
             success(operation, responseObject, apiSuccess);
         }     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            if ([operation isCancelled]){
+                return;
+            }
             [[self getNetworkQueue]removeObject:operation];
             NSLog(@"failure %@ - %@", operation, error);
             if(![operation isEqual:nil] & ![error isEqual:nil]){
@@ -119,12 +137,18 @@ static NSMutableArray *networkQueue = nil;
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:parentView animated:YES];
         [hud setLabelText:@"Loading"];
         operation = [manager DELETE:url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            if ([operation isCancelled]){
+                return;
+            }
             [[self getNetworkQueue]removeObject:operation];
             NSLog(@"success %@ - %@", operation, responseObject);
             [MBProgressHUD hideAllHUDsForView:parentView animated:YES];
             bool apiSuccess = YES;
             success(operation, responseObject, apiSuccess);
         }     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            if ([operation isCancelled]){
+                return;
+            }
             [[self getNetworkQueue]removeObject:operation];
             [MBProgressHUD hideAllHUDsForView:parentView animated:YES];
             NSLog(@"failure %@ - %@", operation, error);
@@ -160,11 +184,17 @@ static NSMutableArray *networkQueue = nil;
     AFHTTPRequestOperation *operation;
     if (parentView == nil) {
         operation = [manager POST:url parameters:parameters constructingBodyWithBlock:block success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            if ([operation isCancelled]){
+                return;
+            }
             [[self getNetworkQueue]removeObject:operation];
             NSLog(@"success %@ - %@", operation, responseObject);
             bool apiSuccess = YES;
             success(operation, responseObject, apiSuccess);
         }     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            if ([operation isCancelled]){
+                return;
+            }
             [[self getNetworkQueue]removeObject:operation];
             NSLog(@"failure %@ - %@", operation, error);
             if(![operation isEqual:nil] & ![error isEqual:nil]){
@@ -176,12 +206,18 @@ static NSMutableArray *networkQueue = nil;
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:parentView animated:YES];
         [hud setLabelText:@"Loading"];
         operation = [manager POST:url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            if ([operation isCancelled]){
+                return;
+            }
             [[self getNetworkQueue]removeObject:operation];
             NSLog(@"success %@ - %@", operation, responseObject);
             [MBProgressHUD hideAllHUDsForView:parentView animated:YES];
             bool apiSuccess = YES;
             success(operation, responseObject, apiSuccess);
         }     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            if ([operation isCancelled]){
+                return;
+            }
             [[self getNetworkQueue]removeObject:operation];
             [MBProgressHUD hideAllHUDsForView:parentView animated:YES];
             NSLog(@"failure %@ - %@", operation, error);
@@ -214,11 +250,17 @@ static NSMutableArray *networkQueue = nil;
     AFHTTPRequestOperation *operation;
     if (parentView == nil) {
         operation = [manager POST:url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            if ([operation isCancelled]){
+                return;
+            }
             [[self getNetworkQueue]removeObject:operation];
             //      NSLog(@"success %@ - %@", operation, responseObject);
             bool apiSuccess = YES;
             success(operation, responseObject, apiSuccess);
         }     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            if ([operation isCancelled]){
+                return;
+            }
             [[self getNetworkQueue]removeObject:operation];
             NSLog(@"failure %@ - %@", operation, error);
             if(![operation isEqual:nil] & ![error isEqual:nil]){
@@ -230,12 +272,18 @@ static NSMutableArray *networkQueue = nil;
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:parentView animated:YES];
         [hud setLabelText:@"Loading"];
         operation = [manager POST:url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            if ([operation isCancelled]){
+                return;
+            }
             [[self getNetworkQueue]removeObject:operation];
             NSLog(@"success %@ - %@", operation, responseObject);
             [MBProgressHUD hideAllHUDsForView:parentView animated:YES];
             bool apiSuccess = YES;
             success(operation, responseObject, apiSuccess);
         }     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            if ([operation isCancelled]){
+                return;
+            }
             NSLog(@"failure %@ - %@", operation, error);
             [[self getNetworkQueue]removeObject:operation];
             [MBProgressHUD hideAllHUDsForView:parentView animated:YES];
@@ -267,11 +315,17 @@ static NSMutableArray *networkQueue = nil;
     AFHTTPRequestOperation *operation;
     if (parentView == nil) {
         operation = [manager PUT:url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            if ([operation isCancelled]){
+                return;
+            }
             [[self getNetworkQueue]removeObject:operation];
             NSLog(@"success %@ - %@", operation, responseObject);
             bool apiSuccess = YES;
             success(operation, responseObject, apiSuccess);
         }    failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            if ([operation isCancelled]){
+                return;
+            }
             [[self getNetworkQueue]removeObject:operation];
             NSLog(@"failure %@ - %@", operation, error);
             if(![operation isEqual:nil] & ![error isEqual:nil]){
@@ -283,12 +337,18 @@ static NSMutableArray *networkQueue = nil;
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:parentView animated:YES];
         [hud setLabelText:@"Loading"];
         operation = [manager PUT:url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            if ([operation isCancelled]){
+                return;
+            }
             [[self getNetworkQueue]removeObject:operation];
             NSLog(@"success %@ - %@", operation, responseObject);
             [MBProgressHUD hideAllHUDsForView:parentView animated:YES];
             bool apiSuccess = [[responseObject objectForKey:@"success"] isEqual:@YES];
             success(operation, responseObject, apiSuccess);
         }    failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            if ([operation isCancelled]){
+                return;
+            }
             [[self getNetworkQueue]removeObject:operation];
             [MBProgressHUD hideAllHUDsForView:parentView animated:YES];
             NSLog(@"failure %@ - %@", operation, error);
@@ -323,10 +383,16 @@ static NSMutableArray *networkQueue = nil;
     AFHTTPRequestOperation *operation;
     if (parentView == nil) {
         operation = [manager GET:url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            if ([operation isCancelled]){
+                return;
+            }
             [[self getNetworkQueue]removeObject:operation];
             bool apiSuccess = YES;
             success(operation, responseObject, apiSuccess);
         }    failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            if ([operation isCancelled]){
+                return;
+            }
             [[self getNetworkQueue]removeObject:operation];
             NSLog(@"failure %@ - %@", operation, error);
             if(![operation isEqual:nil] & ![error isEqual:nil]){
@@ -345,12 +411,18 @@ static NSMutableArray *networkQueue = nil;
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:parentView animated:YES];
         [hud setLabelText:@"Loading"];
         operation = [manager GET:url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            if ([operation isCancelled]){
+                return;
+            }
             [[self getNetworkQueue]removeObject:operation];
             NSLog(@"success %@ - %@", operation, responseObject);
             [MBProgressHUD hideAllHUDsForView:parentView animated:YES];
             bool apiSuccess = YES;
             success(operation, responseObject, apiSuccess);
         }    failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            if ([operation isCancelled]){
+                return;
+            }
             [[self getNetworkQueue]removeObject:operation];
             NSLog(@"failure %@ - %@", operation, error);
             if(![operation isEqual:nil] & ![error isEqual:nil]){
@@ -387,12 +459,19 @@ static NSMutableArray *networkQueue = nil;
     }
     AFHTTPRequestOperation *operation;
     if (parentView == nil) {
+        
         operation = [manager PATCH:url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            if ([operation isCancelled]){
+                return;
+            }
             [[self getNetworkQueue]removeObject:operation];
             NSLog(@"success %@ - %@", operation, responseObject);
             bool apiSuccess = YES;
             success(operation, responseObject, apiSuccess);
         }    failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            if ([operation isCancelled]){
+                return;
+            }
             [[self getNetworkQueue]removeObject:operation];
             NSLog(@"failure %@ - %@", operation, error);
             if(![operation isEqual:nil] & ![error isEqual:nil]){
@@ -404,12 +483,18 @@ static NSMutableArray *networkQueue = nil;
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:parentView animated:YES];
         [hud setLabelText:@"Loading"];
         operation = [manager PATCH:url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            if ([operation isCancelled]){
+                return;
+            }
             [[self getNetworkQueue]removeObject:operation];
             NSLog(@"success %@ - %@", operation, responseObject);
             [MBProgressHUD hideAllHUDsForView:parentView animated:YES];
             bool apiSuccess = [[responseObject objectForKey:@"success"] isEqual:@YES];
             success(operation, responseObject, apiSuccess);
         }    failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            if ([operation isCancelled]){
+                return;
+            }
             [[self getNetworkQueue]removeObject:operation];
             [MBProgressHUD hideAllHUDsForView:parentView animated:YES];
             NSLog(@"failure %@ - %@", operation, error);
